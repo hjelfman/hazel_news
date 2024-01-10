@@ -1,67 +1,116 @@
-# Ed: A Jekyll Theme for Minimal Editions
+# The Minimal theme
 
-[![Build Status](https://travis-ci.org/minicomp/ed.svg?branch=master)](https://travis-ci.org/minicomp/ed) [![Gem Version](https://badge.fury.io/rb/ed..svg)](https://badge.fury.io/rb/ed.)
+[![.github/workflows/ci.yaml](https://github.com/pages-themes/minimal/actions/workflows/ci.yaml/badge.svg)](https://github.com/pages-themes/minimal/actions/workflows/ci.yaml) [![Gem Version](https://badge.fury.io/rb/jekyll-theme-minimal.svg)](https://badge.fury.io/rb/jekyll-theme-minimal)
 
-![Sample Ed screenshot](https://github.com/minicomp/ed/blob/master/assets/screenshot-home.png)
+*Minimal is a Jekyll theme for GitHub Pages. You can [preview the theme to see what it looks like](http://pages-themes.github.io/minimal), or even [use it today](#usage).*
 
+![Thumbnail of Minimal](thumbnail.png)
 
-## Introduction
+## Usage
 
-Ed is a [Jekyll](https://jekyllrb.com/) theme designed for textual editors based on
-[minimal computing](http://go-dh.github.io/mincomp/) principles, and focused on legibility,
-durability, ease and flexibility.
+To use the Minimal theme:
 
-One of our most pressing and ever-evolving needs as scholars is to pass on our textual artifacts
-from one generation to another. The art of textual editing, among other practices, has helped many
-cultures to remember and interpret for centuries. Alas, that art is practiced and encouraged in its
-highest form by a dwindling number of scholars. In a digital environment the problem is compounded
-by the difficulties of the medium. While vast repositories and "e-publications" appear on the
-online scene yearly, very few manifest a textual scholar's disciplined attention to detail. In
-contrast, most textual scholars who have made the leap to a rigorous digital practice have focused
-on markup, relying on technical teams to deploy and maintain their work. This makes your average
-scholarly digital edition a very costly and therefore limited affair.
+1. Add the following to your site's `_config.yml`:
 
-As we see it, a minimal edition is one that aims to reduce the size and complexity of the back and
-front end while flattening the learning curves for the user and the producer. Out of the box, the Ed
-theme can help you build a simple reading edition, or a traditional scholarly edition with footnotes
-and a bibliography, without breaking the bank. In our estimate, these are the two most immediately
-useful type of editions for editors and readers. An edition produced with Ed consists of static
-pages whose rate of decay is substantially lower than database-driven systems. As an added bonus,
-these static pages require less bandwidth. Our hope is that our approach can help beginners and
-veterans deploy beautiful editions with less effort, and that it can help us teach a 'full stack'
-[in one academic semester](https://github.com/susannalles/MinimalEditions/blob/master/README.md),
-while allowing us to care for our projects at less cost, and perhaps, just perhaps, to generate
-high-quality editions on github.io in large quantities based on the
-[git-lit](http://jonreeve.com/2015/09/introducing-git-lit/) model by Jonathan Reeve. We're coming
-for you, Kindle!
+    ```yml
+    remote_theme: pages-themes/minimal@v0.2.0
+    plugins:
+    - jekyll-remote-theme # add this line to the plugins list if you already have one
+    ```
 
+2. Optionally, if you'd like to preview your site on your computer, add the following to your site's `Gemfile`:
 
-## Sample Ed editions.
+    ```ruby
+    gem "github-pages", group: :jekyll_plugins
+    ```
 
-- [Our sample site](http://minicomp.github.io/ed/) is the first edition built with Ed.
-- [Fugitive Verses](http://fugitiverses.viraltexts.org/): Popular Reprinted Poetry from Nineteenth Century Newspapers
-- [mini lazarillo](http://minilazarillo.github.io/): A minimal edition of the *Lazarillo de Tormes*
-- [Making and Knowing](https://cu-mkp.github.io/GR8975-edition/): The BnF Ms Fr 640 in Translation
-- [Daisy Miller: A Comedy in Three Acts](https://britaneeelizabeth.github.io/ed/texts/DaisyMillerPlay/)
+## Customizing
 
+### Configuration variables
 
-## Current Features
+Minimal will respect the following variables, if set in your site's `_config.yml`:
 
-- Templates for narrative, drama and poetry
-- Responsive design for mobile phones, tablets and PCs.
-- Relatively easy to learn and teach
-- Works well in high- or low- bandwidth scenarios
-- Easier for digital archives and libraries to preserve
-- Open source, open access
-- Unobtrusive footnotes
-- Metadata in Dublin Core and OpenGraph to play nice with Zotero, libraries and social media.
-- Automatic table of content generation
-- Simple search functionality
-- Annotations via [hypothes.is](https://hypothes.is/)
-- Optional: Ability to generate well-formatted bibliographies and linked citations
+```yml
+title: [The title of your site]
+description: [A short description of your site's purpose]
+```
 
+Additionally, you may choose to set the following optional variables:
 
-## Installing and using Ed
+```yml
+show_downloads: ["true" or "false" (unquoted) to indicate whether to provide a download URL]
+google_analytics: [Your Google Analytics tracking ID]
+```
 
-To learn how to install and begin using Ed, please visit our
-[documentation page](http://minicomp.github.io/ed/documentation).
+### Stylesheet
+
+If you'd like to add your own custom styles:
+
+1. Create a file called `/assets/css/style.scss` in your site
+2. Add the following content to the top of the file, exactly as shown:
+    ```scss
+    ---
+    ---
+
+    @import "{{ site.theme }}";
+    ```
+3. Add any custom CSS (or Sass, including imports) you'd like immediately after the `@import` line
+
+*Note: If you'd like to change the theme's Sass variables, you must set new values before the `@import` line in your stylesheet.*
+
+### Layouts
+
+If you'd like to change the theme's HTML layout:
+
+1. For some changes such as a custom `favicon`, you can add custom files in your local `_includes` folder. The files [provided with the theme](https://github.com/pages-themes/minimal/tree/master/_includes) provide a starting point and are included by the [original layout template](https://github.com/pages-themes/minimal/blob/master/_layouts/default.html).
+2. For more extensive changes, [copy the original template](https://github.com/pages-themes/minimal/blob/master/_layouts/default.html) from the theme's repository<br />(*Pro-tip: click "raw" to make copying easier*)
+3. Create a file called `/_layouts/default.html` in your site
+4. Paste the default layout content copied in the first step
+5. Customize the layout as you'd like
+
+### Customizing Google Analytics code
+
+Google has released several iterations to their Google Analytics code over the years since this theme was first created. If you would like to take advantage of the latest code, paste it into `_includes/head-custom-google-analytics.html` in your Jekyll site.
+
+### Overriding GitHub-generated URLs
+
+Templates often rely on URLs supplied by GitHub such as links to your repository or links to download your project. If you'd like to override one or more default URLs:
+
+1. Look at [the template source](https://github.com/pages-themes/minimal/blob/master/_layouts/default.html) to determine the name of the variable. It will be in the form of `{{ site.github.zip_url }}`.
+2. Specify the URL that you'd like the template to use in your site's `_config.yml`. For example, if the variable was `site.github.url`, you'd add the following:
+    ```yml
+    github:
+      zip_url: http://example.com/download.zip
+      another_url: another value
+    ```
+3. When your site is built, Jekyll will use the URL you specified, rather than the default one provided by GitHub.
+
+*Note: You must remove the `site.` prefix, and each variable name (after the `github.`) should be indent with two space below `github:`.*
+
+For more information, see [the Jekyll variables documentation](https://jekyllrb.com/docs/variables/).
+
+## Roadmap
+
+See the [open issues](https://github.com/pages-themes/minimal/issues) for a list of proposed features (and known issues).
+
+## Project philosophy
+
+The Minimal theme is intended to make it quick and easy for GitHub Pages users to create their first (or 100th) website. The theme should meet the vast majority of users' needs out of the box, erring on the side of simplicity rather than flexibility, and provide users the opportunity to opt-in to additional complexity if they have specific needs or wish to further customize their experience (such as adding custom CSS or modifying the default layout). It should also look great, but that goes without saying.
+
+## Contributing
+
+Interested in contributing to Minimal? We'd love your help. Minimal is an open source project, built one contribution at a time by users like you. See [the CONTRIBUTING file](docs/CONTRIBUTING.md) for instructions on how to contribute.
+
+### Previewing the theme locally
+
+If you'd like to preview the theme locally (for example, in the process of proposing a change):
+
+1. Clone down the theme's repository (`git clone https://github.com/pages-themes/minimal`)
+2. `cd` into the theme's directory
+3. Run `script/bootstrap` to install the necessary dependencies
+4. Run `bundle exec jekyll serve` to start the preview server
+5. Visit [`localhost:4000`](http://localhost:4000) in your browser to preview the theme
+
+### Running tests
+
+The theme contains a minimal test suite, to ensure a site with the theme would build successfully. To run the tests, simply run `script/cibuild`. You'll need to run `script/bootstrap` once before the test script will work.

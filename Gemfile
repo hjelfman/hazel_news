@@ -1,4 +1,5 @@
-source "https://rubygems.org"
-gemspec
+# frozen_string_literal: true
 
-gem 'github-pages', '~> 228'
+source "https://rubygems.org"
+
+gemspec
