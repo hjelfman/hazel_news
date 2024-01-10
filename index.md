@@ -4,4 +4,6 @@ layout: default
 
 # Hazel News!!
 
-Welcome to your homepage for Hazel news.
+welcome to your homepage for hazel news.
+
+<img src="lizard.gif" style="max-width: 100%">
