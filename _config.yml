@@ -1,6 +1,6 @@
-title: Minimal theme
-logo: /assets/img/logo.png
-description: Minimal is a theme for GitHub Pages.
-show_downloads: true
+title: hazel news!
+logo: /favicon.png
+description: your #1 location for hazel news!
+show_downloads: false
 google_analytics:
 theme: jekyll-theme-minimal
